@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otocinclus - HR Consultancy & HRMS Implementation Partner | Build, Operate, Transfer</title>
-    <meta name="description" content="Otocinclus delivers integrated HR infrastructure for India's growing businesses. Expert HR consultancy, HRMS implementation, payroll compliance & flat 7% recruitment services. We audit, advise, implement, and transfer.">
-    <meta name="keywords" content="HR consultancy, HRMS implementation, payroll services, recruitment agency, HR outsourcing, compliance management, Build-Operate-Transfer, SME HR solutions">
+    <meta name="description" content="Otocinclus delivers integrated HR infrastructure for India's growing businesses. Expert HR consultancy, HRMS implementation, payroll & compliance, and flat 7% recruitment services. We audit, advise, implement, and transfer.">
+    <meta name="keywords" content="HR consultancy, HRMS implementation, payroll services, recruitment, HR outsourcing, compliance management, Build-Operate-Transfer, SME HR solutions, flat 7% recruitment">
     <style>
         :root {
             --primary-blue: #4A90E2;
@@ -78,6 +78,15 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
+        }
+
+        .logo:hover {
+            animation: rotate 1s ease-in-out;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .logo-text {
@@ -165,13 +174,13 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section */
+        /* Hero Section with Slideshow */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(232, 159, 95, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.06) 0%, rgba(232, 159, 95, 0.06) 100%);
             padding: 6rem 2rem 4rem;
             position: relative;
             overflow: hidden;
@@ -197,18 +206,18 @@
         .hero-content {
             max-width: 1400px;
             display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            gap: 4rem;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
+            gap: 3.5rem;
             align-items: center;
             position: relative;
             z-index: 1;
         }
 
         .hero-text h2 {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             color: var(--dark-navy);
             letter-spacing: -1px;
         }
@@ -221,33 +230,48 @@
         }
 
         .hero-text .tagline {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-light);
-            margin-bottom: 2rem;
+            margin-bottom: 1.75rem;
             font-weight: 500;
         }
 
         .hero-text p {
-            font-size: 1.125rem;
+            font-size: 1.1rem;
             color: var(--text-light);
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.25rem;
             line-height: 1.8;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(74,144,226,0.08);
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.9rem;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.25rem;
             flex-wrap: wrap;
         }
 
         .btn-primary {
             background: var(--gradient-primary);
             color: var(--white);
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.4rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
             border: none;
@@ -262,11 +286,11 @@
         .btn-secondary {
             background: var(--white);
             color: var(--primary-blue);
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.4rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             border: 2px solid var(--primary-blue);
             transition: all 0.3s ease;
             cursor: pointer;
@@ -278,238 +302,298 @@
             transform: translateY(-3px);
         }
 
-        .hero-visual {
+        /* Hero Slideshow */
+        .hero-slider-wrapper {
             position: relative;
-        }
-
-        /* Hero Slider */
-        .hero-slider {
-            background: var(--white);
             border-radius: 24px;
-            box-shadow: 0 14px 45px rgba(0, 0, 0, 0.12);
-            padding: 2.25rem 2.5rem 2.75rem;
-            position: relative;
+            background: rgba(255,255,255,0.9);
+            box-shadow: 0 14px 50px rgba(0,0,0,0.12);
             overflow: hidden;
         }
 
-        .hero-slider::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at top right, rgba(74,144,226,0.12), transparent 55%),
-                        radial-gradient(circle at bottom left, rgba(232,159,95,0.1), transparent 55%);
-            pointer-events: none;
-        }
-
-        .slider-slide {
-            display: none;
-            position: relative;
-            z-index: 1;
-            grid-template-columns: auto 1fr;
-            gap: 1.75rem;
+        .hero-slider-header {
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.75rem 0.75rem;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.05);
         }
 
-        .slider-slide.active {
-            display: grid;
-            animation: fadeInSlide 0.6s ease forwards;
+        .hero-slider-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        @keyframes fadeInSlide {
-            from { opacity: 0; transform: translateY(14px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .slide-logo-orbit {
-            width: 92px;
-            height: 92px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(74,144,226,0.15), transparent 65%);
+        .hero-slider-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, #E89F5F 0%, #4A90E2 45%, #1F2533 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
         }
 
-        .slide-logo-orbit::after {
-            content: '';
-            position: absolute;
-            width: 120%;
-            height: 120%;
-            border-radius: 50%;
-            border: 1px dashed rgba(74,144,226,0.4);
-            animation: orbit 12s linear infinite;
-        }
-
-        @keyframes orbit {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .slide-logo-orbit img {
-            width: 64px;
-            height: 64px;
+        .hero-slider-logo img {
+            width: 28px;
+            height: 28px;
             object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
         }
 
-        .slide-content-tag {
-            display: inline-flex;
+        .hero-slider-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark-navy);
+        }
+
+        .hero-slider-sub {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        .hero-slider-badges {
+            display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.35rem 0.85rem;
+        }
+
+        .hero-pill {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.7rem;
             border-radius: 999px;
             background: rgba(74,144,226,0.08);
             color: var(--primary-blue);
-            font-size: 0.8rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            margin-bottom: 0.5rem;
         }
 
-        .slide-heading {
-            font-size: 1.6rem;
-            font-weight: 750;
-            color: var(--dark-navy);
-            margin-bottom: 0.45rem;
+        .hero-pill.secondary {
+            background: rgba(232,159,95,0.08);
+            color: var(--accent-orange);
         }
 
-        .slide-subtitle {
-            font-size: 0.98rem;
-            color: var(--text-light);
-            margin-bottom: 0.85rem;
-        }
-
-        .slide-points {
-            list-style: none;
-            margin-top: 0.25rem;
-        }
-
-        .slide-points li {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            padding: 0.35rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.45rem;
-        }
-
-        .slide-points li::before {
-            content: '●';
-            font-size: 0.55rem;
-            margin-top: 0.4rem;
-            color: var(--primary-blue);
-        }
-
-        /* Mini pricing graphic for 7% slide */
-        .price-graphic {
-            margin-top: 0.6rem;
-            display: grid;
-            gap: 0.45rem;
-        }
-
-        .price-bar-row {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        .price-label {
-            min-width: 70px;
-        }
-
-        .price-bar-track {
-            flex: 1;
-            height: 7px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 999px;
+        .hero-slider {
+            position: relative;
+            height: 320px;
             overflow: hidden;
         }
 
-        .price-bar-fill {
-            height: 100%;
-            border-radius: 999px;
-            background: var(--gradient-secondary);
-            transform-origin: left;
-            animation: growBar 1.2s ease-out forwards;
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+            padding: 1.75rem;
+            gap: 1.75rem;
         }
 
-        .price-bar-fill.senior {
-            background: linear-gradient(90deg, #E89F5F, #F36F45);
+        .hero-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hero-slide-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-slide-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary-blue);
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-slide-copy {
+            font-size: 0.98rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .hero-slide-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .hero-slide-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.4rem;
+        }
+
+        .hero-slide-bullet {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: rgba(74,144,226,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--primary-blue);
+            flex-shrink: 0;
+        }
+
+        .hero-slide-graphic {
+            position: relative;
+            border-radius: 18px;
+            padding: 1.1rem 1.25rem;
+            background: radial-gradient(circle at 30% 20%, rgba(232,159,95,0.25) 0%, rgba(74,144,226,0.25) 40%, rgba(31,37,51,0.9) 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-orbit {
+            position: absolute;
+            inset: 0;
+            opacity: 0.3;
+        }
+
+        .hero-orbit svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-graphic-main {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-graphic-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            opacity: 0.85;
+            margin-bottom: 0.35rem;
+        }
+
+        .hero-graphic-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero-graphic-sub {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero-bars {
+            display: grid;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .hero-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-bar-label {
+            width: 38%;
+            white-space: nowrap;
+        }
+
+        .hero-bar-track {
+            flex: 1;
+            height: 6px;
+            border-radius: 999px;
+            background: rgba(15,23,42,0.6);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            border-radius: inherit;
+            background: var(--gradient-secondary);
+            transform-origin: left;
+            transform: scaleX(0);
+            animation: growBar 1.6s ease forwards;
+        }
+
+        .hero-bar-fill.secondary {
+            background: var(--gradient-primary);
         }
 
         @keyframes growBar {
-            from { transform: scaleX(0); }
             to { transform: scaleX(1); }
         }
 
-        .price-note {
-            font-size: 0.75rem;
-            color: var(--text-light);
-            margin-top: 0.35rem;
+        .hero-slider-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1.5rem 1.1rem;
+            border-top: 1px solid rgba(15, 23, 42, 0.05);
+            background: rgba(248,250,252,0.9);
         }
 
         .hero-slider-controls {
-            position: relative;
-            z-index: 1;
-            margin-top: 1.5rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 0.75rem;
         }
 
-        .slider-dots {
+        .hero-arrow {
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.7);
             display: flex;
-            gap: 0.45rem;
             align-items: center;
-        }
-
-        .slider-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            border: 1px solid rgba(74,144,226,0.5);
-            background: transparent;
+            justify-content: center;
+            background: #ffffff;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
         }
 
-        .slider-dot.active {
+        .hero-arrow:hover {
             background: var(--primary-blue);
-            transform: scale(1.1);
+            color: #ffffff;
             border-color: transparent;
         }
 
-        .slider-caption {
-            font-size: 0.78rem;
-            color: var(--text-light);
+        .hero-dots {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        /* (Old floating-card styles remain in case needed elsewhere) */
-        .floating-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            transition: transform 0.5s ease;
-            transform-style: preserve-3d;
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: rgba(148,163,184,0.7);
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .floating-card:hover {
-            transform: translateZ(20px) rotateY(5deg);
+        .hero-dot.active {
+            width: 18px;
+            background: var(--primary-blue);
         }
 
-        .floating-card h3 {
-            font-size: 1.25rem;
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .floating-card p {
-            font-size: 1rem;
+        .hero-slider-caption {
+            font-size: 0.8rem;
             color: var(--text-light);
         }
 
@@ -530,13 +614,13 @@
         }
 
         .stat-item h3 {
-            font-size: 3.5rem;
+            font-size: 3.1rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
         }
 
         .stat-item p {
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             opacity: 0.95;
             font-weight: 500;
         }
@@ -558,14 +642,14 @@
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 800;
             color: var(--dark-navy);
             margin-bottom: 1rem;
         }
 
         .section-title p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--text-light);
             max-width: 800px;
             margin: 0 auto;
@@ -612,14 +696,14 @@
         }
 
         .trap-point h4 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--primary-blue);
             margin-bottom: 0.5rem;
         }
 
         .trap-point p {
             color: var(--text-light);
-            font-size: 1rem;
+            font-size: 0.98rem;
         }
 
         /* Services Section */
@@ -698,7 +782,7 @@
         .service-card ul li {
             padding: 0.5rem 0;
             color: var(--text-light);
-            font-size: 0.9375rem;
+            font-size: 0.94rem;
             position: relative;
             padding-left: 1.5rem;
         }
@@ -709,20 +793,6 @@
             left: 0;
             color: var(--primary-blue);
             font-weight: bold;
-        }
-
-        .learn-more {
-            color: var(--primary-blue);
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-        }
-
-        .learn-more:hover {
-            gap: 1rem;
         }
 
         /* Models Section */
@@ -752,7 +822,7 @@
             border-radius: 50px;
             border: 2px solid transparent;
             font-weight: 600;
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -818,13 +888,13 @@
         }
 
         .flow-step h4 {
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             color: var(--primary-blue);
             margin-bottom: 0.5rem;
         }
 
         .flow-step p {
-            font-size: 0.9375rem;
+            font-size: 0.92rem;
             color: var(--text-light);
         }
 
@@ -843,7 +913,7 @@
         }
 
         .feature-box h4 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--dark-navy);
             margin-bottom: 1rem;
         }
@@ -857,6 +927,7 @@
             color: var(--text-light);
             position: relative;
             padding-left: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .feature-box ul li::before {
@@ -896,7 +967,7 @@
         }
 
         .pricing-comparison h3 {
-            font-size: 2rem;
+            font-size: 1.9rem;
             margin-bottom: 2rem;
         }
 
@@ -917,7 +988,7 @@
 
         .comparison-item span:last-child {
             font-weight: 700;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
         }
 
         .recruitment-benefits {
@@ -934,7 +1005,7 @@
         }
 
         .benefit-item h4 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
         }
 
@@ -966,21 +1037,21 @@
         .case-study-header {
             display: flex;
             justify-content: space-between;
-            align-items: start;
+            align-items: flex-start;
             margin-bottom: 2rem;
             flex-wrap: wrap;
             gap: 2rem;
         }
 
         .case-study-info h3 {
-            font-size: 1.75rem;
+            font-size: 1.7rem;
             color: var(--dark-navy);
             margin-bottom: 0.5rem;
         }
 
         .case-study-info p {
             color: var(--text-light);
-            font-size: 1rem;
+            font-size: 0.98rem;
         }
 
         .case-study-metrics {
@@ -993,13 +1064,13 @@
         }
 
         .metric h4 {
-            font-size: 2rem;
+            font-size: 1.9rem;
             color: var(--primary-blue);
             font-weight: 800;
         }
 
         .metric p {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-light);
         }
 
@@ -1019,12 +1090,13 @@
         .challenge h4, .solution h4 {
             color: var(--primary-blue);
             margin-bottom: 1rem;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
         }
 
         .challenge p, .solution p {
             color: var(--text-light);
             line-height: 1.7;
+            font-size: 0.98rem;
         }
 
         /* Contact Section */
@@ -1049,7 +1121,7 @@
 
         .contact-info p {
             color: var(--text-light);
-            font-size: 1.125rem;
+            font-size: 1.08rem;
             margin-bottom: 2rem;
             line-height: 1.7;
         }
@@ -1106,7 +1178,7 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--dark-navy);
-            font-size: 1rem;
+            font-size: 0.98rem;
         }
 
         .form-group input,
@@ -1141,7 +1213,7 @@
             border-radius: 50px;
             border: none;
             font-weight: 600;
-            font-size: 1.125rem;
+            font-size: 1.05rem;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
@@ -1170,14 +1242,14 @@
         }
 
         .footer-section h4 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             margin-bottom: 1.5rem;
         }
 
         .footer-section p {
             opacity: 0.8;
             line-height: 1.7;
-            font-size: 0.9375rem;
+            font-size: 0.92rem;
         }
 
         .footer-links {
@@ -1193,7 +1265,7 @@
             text-decoration: none;
             opacity: 0.8;
             transition: opacity 0.3s ease;
-            font-size: 0.9375rem;
+            font-size: 0.92rem;
         }
 
         .footer-links a:hover {
@@ -1205,10 +1277,19 @@
             padding-top: 2rem;
             text-align: center;
             opacity: 0.7;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }
 
         /* Responsive Design */
+        @media (max-width: 1100px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding-top: 7rem;
+            }
+        }
+
         @media (max-width: 968px) {
             .nav-links {
                 display: none;
@@ -1218,7 +1299,6 @@
                 display: flex;
             }
 
-            .hero-content,
             .admin-trap-content,
             .recruitment-content,
             .contact-container,
@@ -1227,11 +1307,11 @@
             }
 
             .hero-text h2 {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
             }
 
             .hero-text .tagline {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
             }
 
             .section-title h2 {
@@ -1246,12 +1326,14 @@
                 flex-direction: column;
             }
 
-            .slider-slide {
+            .hero-slide {
                 grid-template-columns: 1fr;
+                height: 100%;
+                overflow-y: auto;
             }
 
-            .slide-logo-orbit {
-                margin-bottom: 0.75rem;
+            .hero-slider {
+                height: 360px;
             }
         }
 
@@ -1261,7 +1343,7 @@
             }
 
             .stat-item h3 {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
             }
 
             .services-grid,
@@ -1269,8 +1351,14 @@
                 grid-template-columns: 1fr;
             }
 
-            .hero-slider {
-                padding: 1.75rem 1.75rem 2.25rem;
+            .hero-slider-header, .hero-slider-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .hero-slider-wrapper {
+                margin-top: 1.5rem;
             }
         }
 
@@ -1285,16 +1373,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Loading Animation */
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .logo:hover {
-            animation: rotate 1s ease-in-out;
-        }
     </style>
 </head>
 <body>
@@ -1302,7 +1380,6 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo-container">
-                <!-- Use the exact brand logo -->
                 <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f9e60f6-2d9e-475f-b0f1-cf9f812f2d26" alt="Otocinclus Logo" class="logo">
                 <div class="logo-text">
                     <h1>OTOCINCLUS</h1>
@@ -1325,93 +1402,200 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Core Value Slideshow -->
+    <!-- Hero Section with Core Slideshow -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
+                <div class="hero-badge">
+                    <span>Otocinclus • HR Consultancy & HRMS Implementation Partner</span>
+                </div>
                 <h2>We Remove the <span class="highlight">Admin Trap</span></h2>
                 <p class="tagline">Audit. Advise. Implement. Transfer.</p>
-                <p>Otocinclus is your <strong>HR Consultancy &amp; HRMS Implementation Partner</strong> delivering integrated HR infrastructure for India's growing businesses. We build professional HR systems, operate them flawlessly, and transfer them to your team when you're ready.</p>
+                <p>Otocinclus delivers integrated HR infrastructure for India's growth-stage businesses. As your <strong>HR consultancy and implementation partner</strong>, we build professional HR systems, run them end‑to‑end, and then hand them over to your internal team when you are ready.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary">Schedule Consultation</a>
-                    <a href="#services" class="btn-secondary">Explore Services</a>
+                    <a href="#contact" class="btn-primary">Schedule Free HR Audit</a>
+                    <a href="#recruitment" class="btn-secondary">Explore 7% Recruitment</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-slider" aria-label="Otocinclus core value propositions">
-                    <!-- Slide 1: We Remove the Admin Trap -->
-                    <div class="slider-slide active" data-slide="0">
-                        <div class="slide-logo-orbit">
-                            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f9e60f6-2d9e-475f-b0f1-cf9f812f2d26" alt="Otocinclus Logo">
+
+            <!-- Slideshow: Admin Trap & Flat 7% Recruitment -->
+            <div class="hero-slider-wrapper">
+                <div class="hero-slider-header">
+                    <div class="hero-slider-header-left">
+                        <div class="hero-slider-logo">
+                            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f9e60f6-2d9e-475f-b0f1-cf9f812f2d26" alt="Otocinclus Logo Mark">
                         </div>
                         <div>
-                            <div class="slide-content-tag">
-                                <span>Core 01</span> · <span>Admin Trap</span>
-                            </div>
-                            <h3 class="slide-heading">We Remove the Admin Trap</h3>
-                            <p class="slide-subtitle">Free founders from HR firefighting so they can reclaim strategic time and grow confidently.</p>
-                            <ul class="slide-points">
-                                <li><strong>Audit &amp; Diagnose:</strong> Map your current HR, payroll and compliance risks across the employee lifecycle.</li>
-                                <li><strong>Design Infrastructure:</strong> Create policies, processes and HRMS configuration tailored to your stage and industry.</li>
-                                <li><strong>Run Operations:</strong> We handle payroll, attendance, compliance and employee records as your managed HR team.</li>
-                                <li><strong>Transfer Ownership:</strong> When you are ready, we train your internal HR, hand over SOPs, and stay as your implementation partner.</li>
+                            <div class="hero-slider-title">Two Ways We Unlock Your Growth</div>
+                            <div class="hero-slider-sub">Operational freedom + predictable hiring cost</div>
+                        </div>
+                    </div>
+                    <div class="hero-slider-badges">
+                        <span class="hero-pill">Admin Trap</span>
+                        <span class="hero-pill secondary">Flat 7% Recruitment</span>
+                    </div>
+                </div>
+
+                <div class="hero-slider">
+                    <!-- Slide 1: We Remove the Admin Trap -->
+                    <div class="hero-slide active" data-index="0">
+                        <div>
+                            <div class="hero-slide-tag">Core 01</div>
+                            <div class="hero-slide-title">We Remove the Admin Trap</div>
+                            <p class="hero-slide-copy">
+                                Between 15–100 employees, HR administration explodes. Founders get pulled into payroll, attendance, and compliance instead of strategy.
+                                Otocinclus becomes your integrated HR backbone so you never get stuck in this trap.
+                            </p>
+                            <ul class="hero-slide-list">
+                                <li>
+                                    <div class="hero-slide-bullet">1</div>
+                                    <span><strong>Full HR governance:</strong> policies, org structure, and SOPs aligned to your business and labour laws.</span>
+                                </li>
+                                <li>
+                                    <div class="hero-slide-bullet">2</div>
+                                    <span><strong>HRMS implemented right:</strong> we configure employee data, payroll, shifts, and leave into one reliable system.</span>
+                                </li>
+                                <li>
+                                    <div class="hero-slide-bullet">3</div>
+                                    <span><strong>Payroll & compliance shield:</strong> accurate payslips, filings, and returns every month with maker‑checker controls.</span>
+                                </li>
+                                <li>
+                                    <div class="hero-slide-bullet">4</div>
+                                    <span><strong>Build‑Operate‑Transfer model:</strong> once stable, we train your internal HR team and hand over the machinery.</span>
+                                </li>
                             </ul>
+                        </div>
+                        <div class="hero-slide-graphic">
+                            <div class="hero-orbit">
+                                <!-- Orbit‑style graphic inspired by logo -->
+                                <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <radialGradient id="g1" cx="50%" cy="45%" r="65%">
+                                            <stop offset="0%" stop-color="#E89F5F" stop-opacity="0.9"/>
+                                            <stop offset="45%" stop-color="#4A90E2" stop-opacity="0.4"/>
+                                            <stop offset="100%" stop-color="#0B1120" stop-opacity="0"/>
+                                        </radialGradient>
+                                    </defs>
+                                    <rect width="260" height="200" fill="url(#g1)"/>
+                                    <circle cx="130" cy="100" r="18" stroke="#F97316" stroke-width="3" fill="none"/>
+                                    <circle cx="130" cy="100" r="6" fill="#F97316"/>
+                                    <circle cx="130" cy="100" r="36" stroke="#38BDF8" stroke-width="2" fill="none" stroke-dasharray="8 6"/>
+                                    <circle cx="130" cy="100" r="58" stroke="#4A90E2" stroke-width="2" fill="none" stroke-dasharray="10 7"/>
+                                    <circle cx="130" cy="100" r="80" stroke="#93C5FD" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+                                    <circle cx="75" cy="70" r="4" fill="#FBBF24"/>
+                                    <circle cx="175" cy="70" r="4" fill="#FBBF24"/>
+                                    <circle cx="70" cy="130" r="4" fill="#FBBF24"/>
+                                    <circle cx="190" cy="132" r="4" fill="#FBBF24"/>
+                                </svg>
+                            </div>
+                            <div class="hero-graphic-main">
+                                <div class="hero-graphic-label">Founder Time Recaptured</div>
+                                <div class="hero-graphic-value">20+ hrs/mo</div>
+                                <div class="hero-graphic-sub">Shift from admin firefighting to strategy, sales, and product.</div>
+                                <div class="hero-bars">
+                                    <div class="hero-bar-row">
+                                        <div class="hero-bar-label">Before Otocinclus</div>
+                                        <div class="hero-bar-track">
+                                            <div class="hero-bar-fill" style="width: 92%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="hero-bar-row">
+                                        <div class="hero-bar-label">With Otocinclus</div>
+                                        <div class="hero-bar-track">
+                                            <div class="hero-bar-fill secondary" style="width: 35%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Slide 2: Flat 7% Recruitment -->
-                    <div class="slider-slide" data-slide="1">
-                        <div class="slide-logo-orbit">
-                            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/4f9e60f6-2d9e-475f-b0f1-cf9f812f2d26" alt="Otocinclus Logo">
-                        </div>
+                    <div class="hero-slide" data-index="1">
                         <div>
-                            <div class="slide-content-tag" style="background: rgba(232,159,95,0.12); color: #E89F5F;">
-                                <span>Core 02</span> · <span>Flat 7% Hiring</span>
-                            </div>
-                            <h3 class="slide-heading">Flat 7% Recruitment – All Levels</h3>
-                            <p class="slide-subtitle">Transparent, affordable hiring without a leadership penalty. Recruitment is a separate, flat 7% service.</p>
-                            <ul class="slide-points">
-                                <li><strong>One Rate for All Levels:</strong> 7% of annual CTC across junior, mid and senior roles – no hidden slabs.</li>
-                                <li><strong>Integrated Delivery:</strong> Sourcing, screening, interview coordination, offer negotiation and joining support.</li>
-                                <li><strong>Admin-Light for Founders:</strong> Our HR &amp; payroll integration means candidates join with ready HRMS, payroll and compliance setups.</li>
-                                <li><strong>Affordable vs Market:</strong> Typical agencies charge 8.33–20% – Otocinclus keeps hiring budgets predictable and sustainable.</li>
+                            <div class="hero-slide-tag">Core 02</div>
+                            <div class="hero-slide-title">Flat 7% Recruitment – All Levels</div>
+                            <p class="hero-slide-copy">
+                                Recruitment is priced separately at a simple, transparent <strong>flat 7% of annual CTC</strong> across junior, mid, and senior roles – with no leadership premium.
+                                You get full‑stack search without the usual agency shock.
+                            </p>
+                            <ul class="hero-slide-list">
+                                <li>
+                                    <div class="hero-slide-bullet">✓</div>
+                                    <span><strong>7% only for recruitment services:</strong> other HR services are subscription‑based and remain affordable vs. market standards.</span>
+                                </li>
+                                <li>
+                                    <div class="hero-slide-bullet">✓</div>
+                                    <span><strong>End‑to‑end hiring support:</strong> JD creation, sourcing, screening, interviews, negotiation, and joining coordination.</span>
+                                </li>
+                                <li>
+                                    <div class="hero-slide-bullet">✓</div>
+                                    <span><strong>Integrated with HR & payroll:</strong> hired candidates flow smoothly into HRMS, payroll, and compliance.</span>
+                                </li>
+                                <li>
+                                    <div class="hero-slide-bullet">✓</div>
+                                    <span><strong>Affordable vs market:</strong> saves 30–65% on senior hires compared to typical tiered fee structures.</span>
+                                </li>
                             </ul>
-
-                            <div class="price-graphic" aria-hidden="true">
-                                <div class="price-bar-row">
-                                    <span class="price-label">Junior</span>
-                                    <div class="price-bar-track">
-                                        <div class="price-bar-fill" style="width: 80%;"></div>
+                        </div>
+                        <div class="hero-slide-graphic">
+                            <div class="hero-orbit">
+                                <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="#4A90E2" stop-opacity="0.4"/>
+                                            <stop offset="100%" stop-color="#E89F5F" stop-opacity="0.8"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="260" height="200" fill="url(#g2)"/>
+                                    <rect x="26" y="40" width="208" height="120" rx="18" ry="18" fill="rgba(15,23,42,0.85)"/>
+                                    <rect x="42" y="70" width="80" height="12" rx="6" fill="#F97316"/>
+                                    <rect x="42" y="100" width="125" height="12" rx="6" fill="#F97316" opacity="0.85"/>
+                                    <rect x="42" y="130" width="165" height="12" rx="6" fill="#F97316" opacity="0.7"/>
+                                    <rect x="145" y="70" width="70" height="12" rx="6" fill="#38BDF8"/>
+                                    <rect x="145" y="100" width="70" height="12" rx="6" fill="#38BDF8"/>
+                                    <rect x="145" y="130" width="70" height="12" rx="6" fill="#38BDF8"/>
+                                    <text x="45" y="64" fill="#E5E7EB" font-size="9">Traditional % Fees</text>
+                                    <text x="148" y="64" fill="#E5E7EB" font-size="9">Otocinclus 7%</text>
+                                </svg>
+                            </div>
+                            <div class="hero-graphic-main">
+                                <div class="hero-graphic-label">Flat Recruitment Fee</div>
+                                <div class="hero-graphic-value">7% CTC</div>
+                                <div class="hero-graphic-sub">Transparent, same rate from junior to leadership roles.</div>
+                                <div class="hero-bars">
+                                    <div class="hero-bar-row">
+                                        <div class="hero-bar-label">Typical senior fee</div>
+                                        <div class="hero-bar-track">
+                                            <div class="hero-bar-fill" style="width: 80%;"></div>
+                                        </div>
                                     </div>
-                                    <span style="font-size:0.75rem;">8.33% → 7%</span>
-                                </div>
-                                <div class="price-bar-row">
-                                    <span class="price-label">Mid</span>
-                                    <div class="price-bar-track">
-                                        <div class="price-bar-fill" style="width: 95%;"></div>
+                                    <div class="hero-bar-row">
+                                        <div class="hero-bar-label">Otocinclus (all levels)</div>
+                                        <div class="hero-bar-track">
+                                            <div class="hero-bar-fill secondary" style="width: 28%;"></div>
+                                        </div>
                                     </div>
-                                    <span style="font-size:0.75rem;">12–15% → 7%</span>
                                 </div>
-                                <div class="price-bar-row">
-                                    <span class="price-label">Senior</span>
-                                    <div class="price-bar-track">
-                                        <div class="price-bar-fill senior" style="width: 100%;"></div>
-                                    </div>
-                                    <span style="font-size:0.75rem;">20%+ → 7%</span>
+                                <div style="margin-top:0.8rem;font-size:0.8rem;opacity:0.9;">
+                                    Average <strong>30–65% savings</strong> on critical senior hires, plus 90‑day replacement support.
                                 </div>
-                                <p class="price-note">Recruitment is billed separately at a flat 7% fee, keeping all other HR services affordable and transparent.</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
+                <div class="hero-slider-footer">
                     <div class="hero-slider-controls">
-                        <div class="slider-dots">
-                            <button class="slider-dot active" aria-label="Admin Trap slide"></button>
-                            <button class="slider-dot" aria-label="Flat 7% Recruitment slide"></button>
+                        <button type="button" class="hero-arrow" id="heroPrev" aria-label="Previous slide">‹</button>
+                        <div class="hero-dots">
+                            <div class="hero-dot active" data-index="0"></div>
+                            <div class="hero-dot" data-index="1"></div>
                         </div>
-                        <div class="slider-caption">
-                            Swipe or tap dots to explore how Otocinclus removes the Admin Trap and makes hiring affordable.
-                        </div>
+                        <button type="button" class="hero-arrow" id="heroNext" aria-label="Next slide">›</button>
+                    </div>
+                    <div class="hero-slider-caption">
+                        Slide 1: Admin Trap • Slide 2: Flat 7% Recruitment (recruitment pricing is separate from other HR services).
                     </div>
                 </div>
             </div>
@@ -1423,7 +1607,7 @@
         <div class="stats-container">
             <div class="stat-item">
                 <h3>30-65%</h3>
-                <p>Cost Savings vs. Traditional Agencies</p>
+                <p>Cost Savings on Senior Hires vs. Typical Fees</p>
             </div>
             <div class="stat-item">
                 <h3>20+ Hours</h3>
@@ -1445,7 +1629,7 @@
         <div class="admin-trap-container">
             <div class="section-title">
                 <h2>The Admin Trap: Where Growth Stalls</h2>
-                <p>Growing businesses between 15-100 employees face a critical inflection point. Too large for spreadsheets. Too small for a VP of HR. Too risky to ignore.</p>
+                <p>Growing businesses between 15–100 employees face a critical inflection point. Too large for spreadsheets. Too small for a VP of HR. Too risky to ignore.</p>
             </div>
             <div class="admin-trap-content">
                 <div class="trap-visual">
@@ -1456,7 +1640,7 @@
                             <path d="M 50 250 Q 100 240, 150 180 T 250 80 T 350 60" stroke="#4A90E2" stroke-width="4" fill="none"/>
                             <circle cx="150" cy="180" r="6" fill="#E89F5F"/>
                             <text x="140" y="210" font-size="12" fill="#E89F5F" font-weight="bold">The Admin Trap</text>
-                            <text x="130" y="225" font-size="11" fill="#626C71">(15-100 employees)</text>
+                            <text x="130" y="225" font-size="11" fill="#626C71">(15–100 employees)</text>
                             <text x="10" y="280" font-size="12" fill="#626C71">Employee Count →</text>
                         </svg>
                     </div>
@@ -1464,19 +1648,19 @@
                 <div class="trap-points">
                     <div class="trap-point">
                         <h4>⏱️ Time Drain</h4>
-                        <p>Founders and CXOs spend 15-25 hours per week on HR administration - that's 25% of strategic capacity lost.</p>
+                        <p>Founders and CXOs spend 15–25 hours per week on HR administration – close to 25% of strategic capacity lost.</p>
                     </div>
                     <div class="trap-point">
                         <h4>⚖️ Compliance Risk</h4>
-                        <p>New Social Security Code penalties include imprisonment and substantial fines. Ignorance is not protection.</p>
+                        <p>New labour codes introduce severe penalties. Manual, spreadsheet‑driven processes make non‑compliance almost inevitable.</p>
                     </div>
                     <div class="trap-point">
                         <h4>💸 Financial Loss</h4>
-                        <p>30-40% higher effective HR costs due to hidden burdens like errors, delays, and opportunity costs.</p>
+                        <p>30–40% higher effective HR costs due to hidden burdens such as rework, penalties, and poor hiring decisions.</p>
                     </div>
                     <div class="trap-point">
                         <h4>🎯 Strategic Impact</h4>
-                        <p>Poor HR infrastructure blocks investor readiness, damages employer branding, and limits growth velocity.</p>
+                        <p>Poor HR infrastructure blocks investor readiness, damages employer branding, and slows down scale‑up plans.</p>
                     </div>
                 </div>
             </div>
@@ -1488,7 +1672,7 @@
         <div class="services-container">
             <div class="section-title">
                 <h2>Comprehensive HR Infrastructure Services</h2>
-                <p>Full-stack HR solutions designed for growing businesses. We handle everything so you can focus on growth.</p>
+                <p>Full‑stack HR solutions designed for growing businesses. We handle operations, systems, and compliance so you can focus on growth.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -1506,11 +1690,11 @@
                 <div class="service-card">
                     <div class="service-icon">💻</div>
                     <h3>HRMS Selection, Implementation &amp; Administration</h3>
-                    <p>Vendor-agnostic HRMS implementation expertise. We help you select, configure, and operate the right system.</p>
+                    <p>Independent, vendor‑agnostic HRMS expertise. We help you select, configure, and operate the right system for your stage.</p>
                     <ul>
                         <li>HRMS selection &amp; fitment advisory</li>
-                        <li>Complete configuration (payroll, attendance, leave)</li>
-                        <li>Data migration from legacy systems</li>
+                        <li>Complete configuration (employee master, payroll, attendance, leave)</li>
+                        <li>Data migration from spreadsheets and legacy tools</li>
                         <li>Ongoing HRMS administration &amp; support</li>
                         <li>HRMS training for internal teams</li>
                     </ul>
@@ -1519,12 +1703,12 @@
                 <div class="service-card">
                     <div class="service-icon">💰</div>
                     <h3>Payroll &amp; Statutory Compliance</h3>
-                    <p>Accurate, timely payroll processing with zero compliance risk. Your compliance shield.</p>
+                    <p>Accurate, timely payroll processing with zero‑surprise compliance. Your HR back‑office shield.</p>
                     <ul>
-                        <li>Monthly payroll processing &amp; payslips</li>
+                        <li>Monthly payroll processing &amp; payslip distribution</li>
                         <li>Statutory deductions &amp; filings (PF, ESI, PT, TDS)</li>
                         <li>Statutory returns &amp; challans</li>
-                        <li>Full &amp; final settlements</li>
+                        <li>Full &amp; final settlements and related compliance</li>
                         <li>Payroll MIS &amp; analytics reports</li>
                     </ul>
                 </div>
@@ -1537,7 +1721,7 @@
                         <li>Shift rules and attendance logic design</li>
                         <li>Leave policy design, setup, and tracking</li>
                         <li>Monthly attendance reconciliation</li>
-                        <li>Attendance and leave dashboards</li>
+                        <li>Attendance and leave dashboards &amp; reports</li>
                     </ul>
                 </div>
 
@@ -1546,38 +1730,38 @@
                     <h3>Employee Lifecycle Management</h3>
                     <p>Seamless employee journey management from onboarding to exit with complete documentation.</p>
                     <ul>
-                        <li>End-to-end onboarding (documentation, KYC)</li>
+                        <li>End‑to‑end onboarding (documentation, KYC, HRMS account creation)</li>
                         <li>Employee records management (digital files)</li>
-                        <li>Confirmation &amp; probation tracking</li>
-                        <li>Appraisal cycle coordination support</li>
+                        <li>Confirmation &amp; probation tracking support</li>
+                        <li>Light appraisal cycle coordination support</li>
                         <li>Exit management, NOC, and F&amp;F settlements</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🎯</div>
-                    <h3>Recruitment Services (Flat 7% - All Levels)</h3>
-                    <p>Industry-disrupting recruitment pricing. Same quality, transparent cost across all levels. <strong>Recruitment services charged separately at flat 7% - affordable rates compared to market standard.</strong></p>
+                    <h3>Recruitment Services (Flat 7% – All Levels)</h3>
+                    <p><strong>Recruitment is priced separately at a flat 7% of annual CTC</strong> across junior, mid, and senior roles – positioned as more affordable than typical market rates.</p>
                     <ul>
                         <li>Requirement understanding &amp; JD creation</li>
-                        <li>Multi-channel sourcing &amp; screening</li>
+                        <li>Multi‑channel sourcing &amp; screening</li>
                         <li>Interview coordination with hiring managers</li>
                         <li>Offer negotiation support</li>
                         <li>Joining &amp; onboarding coordination</li>
-                        <li>90-day free replacement guarantee</li>
+                        <li>Optional background &amp; reference checks</li>
                     </ul>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">🎓</div>
                     <h3>Capability Building &amp; Handover</h3>
-                    <p>Knowledge transfer and training to empower your internal HR team for independence.</p>
+                    <p>Knowledge transfer and training to empower your internal HR team to run the function independently.</p>
                     <ul>
                         <li>HRMS admin training for internal HR</li>
                         <li>Payroll &amp; compliance training</li>
                         <li>Process walkthroughs with SOP handover</li>
-                        <li>Knowledge transfer sessions</li>
-                        <li>Post-handover support</li>
+                        <li>Knowledge transfer sessions for HR &amp; finance</li>
+                        <li>Post‑handover support as required</li>
                     </ul>
                 </div>
             </div>
@@ -1593,31 +1777,31 @@
             </div>
             
             <div class="models-tabs">
-                <button class="tab-button active" onclick="switchTab('model1')">Model 1: Managed HR Services</button>
-                <button class="tab-button" onclick="switchTab('model2')">Model 2: Build-Operate-Transfer</button>
+                <button class="tab-button active" onclick="switchTab('model1', event)">Model 1: Managed HR Services</button>
+                <button class="tab-button" onclick="switchTab('model2', event)">Model 2: Build-Operate-Transfer</button>
             </div>
 
             <div id="model1" class="tab-content active">
                 <div class="model-content">
-                    <h3 style="font-size: 2rem; color: var(--dark-navy); margin-bottom: 1rem;">Complete Outsourced HR Services (Managed HR)</h3>
-                    <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem;">Best for companies who want us to handle everything. We act as your extended HR department.</p>
+                    <h3 style="font-size: 1.9rem; color: var(--dark-navy); margin-bottom: 1rem;">Complete Outsourced HR Services (Managed HR)</h3>
+                    <p style="font-size: 1.08rem; color: var(--text-light); margin-bottom: 2rem;">Best for companies who want Otocinclus to handle everything. We act as your extended HR department.</p>
                     
                     <div class="model-flow">
                         <div class="flow-step">
                             <h4>Start</h4>
-                            <p>Initial Audit</p>
+                            <p>Discovery &amp; initial audit</p>
                         </div>
                         <div class="flow-step">
                             <h4>Audit</h4>
-                            <p>Gap Analysis</p>
+                            <p>Gap analysis &amp; roadmap</p>
                         </div>
                         <div class="flow-step">
                             <h4>Setup</h4>
-                            <p>Implementation</p>
+                            <p>Systems, policies &amp; processes</p>
                         </div>
                         <div class="flow-step">
                             <h4>Operate</h4>
-                            <p>Ongoing Management</p>
+                            <p>End‑to‑end HR operations</p>
                         </div>
                     </div>
 
@@ -1635,7 +1819,7 @@
                             <h4>HRMS Implementation &amp; Management</h4>
                             <ul>
                                 <li>HRMS selection support</li>
-                                <li>Complete system configuration</li>
+                                <li>Complete configuration &amp; data migration</li>
                                 <li>Employee master data setup</li>
                                 <li>Ongoing HRMS administration</li>
                             </ul>
@@ -1661,29 +1845,29 @@
                     </div>
 
                     <div style="background: var(--white); padding: 2rem; border-radius: 15px; margin-top: 3rem; text-align: center;">
-                        <h4 style="font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1rem;">Outcome</h4>
-                        <p style="font-size: 1.125rem; color: var(--text-light);">Get a fully functional HR department without hiring an internal HR team. Per-employee monthly subscription model provides predictable costs and enterprise-grade HR infrastructure.</p>
+                        <h4 style="font-size: 1.4rem; color: var(--primary-blue); margin-bottom: 1rem;">Outcome</h4>
+                        <p style="font-size: 1.05rem; color: var(--text-light);">Get a fully functional HR department without hiring an internal HR team. A per‑employee monthly subscription provides predictable costs and enterprise‑grade HR infrastructure.</p>
                     </div>
                 </div>
             </div>
 
             <div id="model2" class="tab-content">
                 <div class="model-content">
-                    <h3 style="font-size: 2rem; color: var(--dark-navy); margin-bottom: 1rem;">HR Setup + Transition to Client HR Team</h3>
-                    <p style="font-size: 1.125rem; color: var(--text-light); margin-bottom: 2rem;">Best for companies planning to build an internal HR team. We set up, stabilize, then hand over.</p>
+                    <h3 style="font-size: 1.9rem; color: var(--dark-navy); margin-bottom: 1rem;">HR Setup + Transition to Client HR Team</h3>
+                    <p style="font-size: 1.08rem; color: var(--text-light); margin-bottom: 2rem;">Best for companies planning to build an internal HR team. We set up, stabilize, then hand over.</p>
                     
                     <div class="model-flow">
                         <div class="flow-step">
                             <h4>Phase 1</h4>
-                            <p>HR Setup &amp; HRMS Implementation</p>
+                            <p>HR setup &amp; HRMS implementation</p>
                         </div>
                         <div class="flow-step">
                             <h4>Phase 2</h4>
-                            <p>Initial Operations (2-3 Months)</p>
+                            <p>Initial operations (2–3 months)</p>
                         </div>
                         <div class="flow-step">
                             <h4>Phase 3</h4>
-                            <p>Training &amp; Handover</p>
+                            <p>Training &amp; handover</p>
                         </div>
                     </div>
 
@@ -1693,19 +1877,19 @@
                             <ul>
                                 <li>HR policy &amp; handbook creation</li>
                                 <li>Compliance &amp; statutory setup</li>
-                                <li>HRMS implementation</li>
+                                <li>HRMS implementation &amp; configuration</li>
                                 <li>Payroll, attendance &amp; leave setup</li>
                                 <li>Employee data migration</li>
                                 <li>Process documentation (SOPs)</li>
                             </ul>
                         </div>
                         <div class="feature-box">
-                            <h4>Phase 2: Initial Operations (2-3 Months)</h4>
+                            <h4>Phase 2: Initial Operations (2–3 Months)</h4>
                             <ul>
                                 <li>Payroll processing &amp; compliance filings</li>
                                 <li>Attendance &amp; leave administration</li>
                                 <li>Employee lifecycle support</li>
-                                <li>HRMS monitoring &amp; fine-tuning</li>
+                                <li>HRMS monitoring &amp; fine‑tuning</li>
                                 <li>Issue resolution &amp; stabilization</li>
                             </ul>
                         </div>
@@ -1716,14 +1900,14 @@
                                 <li>Payroll &amp; compliance training</li>
                                 <li>Process walkthroughs &amp; SOP handover</li>
                                 <li>Knowledge transfer sessions</li>
-                                <li>Post-handover support (as required)</li>
+                                <li>Post‑handover support (as required)</li>
                             </ul>
                         </div>
                     </div>
 
                     <div style="background: var(--white); padding: 2rem; border-radius: 15px; margin-top: 3rem; text-align: center;">
-                        <h4 style="font-size: 1.5rem; color: var(--primary-blue); margin-bottom: 1rem;">Outcome</h4>
-                        <p style="font-size: 1.125rem; color: var(--text-light);">Your internal HR team inherits a professionally built, fully operational HR system with complete documentation, training, and post-handover support. You own the function.</p>
+                        <h4 style="font-size: 1.4rem; color: var(--primary-blue); margin-bottom: 1rem;">Outcome</h4>
+                        <p style="font-size: 1.05rem; color: var(--text-light);">Your internal HR team inherits a professionally built, fully operational HR system with complete documentation, training, and post‑handover support. You own the function; Otocinclus remains your partner.</p>
                     </div>
                 </div>
             </div>
@@ -1734,47 +1918,47 @@
     <section id="recruitment" class="recruitment">
         <div class="recruitment-container">
             <div class="section-title" style="color: var(--white);">
-                <h2>Recruitment Services: Flat 7% - All Levels</h2>
-                <p style="color: rgba(255, 255, 255, 0.95);">We eliminate the "Leadership Penalty" charged by traditional agencies. Same quality, transparent pricing across all levels. <strong>Charged separately at affordable rates below market standard.</strong></p>
+                <h2>Recruitment Services: Flat 7% – All Levels</h2>
+                <p style="color: rgba(255, 255, 255, 0.95);">We remove complex slabs and leadership penalties. Recruitment is priced separately at a simple, transparent 7% of annual CTC, positioned below typical market standards.</p>
             </div>
 
             <div class="recruitment-content">
                 <div class="pricing-comparison">
-                    <h3>Pricing Comparison</h3>
+                    <h3>Fee Structure Snapshot</h3>
                     <div class="comparison-item">
-                        <span>Traditional Agency - Junior</span>
-                        <span>8.33%</span>
+                        <span>Typical Junior Fee</span>
+                        <span>≈ 8–10%</span>
                     </div>
                     <div class="comparison-item">
-                        <span>Traditional Agency - Mid</span>
-                        <span>12-15%</span>
+                        <span>Typical Mid‑Level Fee</span>
+                        <span>≈ 12–15%</span>
                     </div>
                     <div class="comparison-item">
-                        <span>Traditional Agency - Senior</span>
-                        <span>20%+</span>
+                        <span>Typical Senior/Leadership Fee</span>
+                        <span>≈ 18–20%+</span>
                     </div>
                     <div class="comparison-item" style="border-top: 2px solid rgba(255, 255, 255, 0.4); padding-top: 1.5rem; margin-top: 1.5rem;">
-                        <span style="font-size: 1.5rem;">Otocinclus - All Levels</span>
-                        <span style="font-size: 1.75rem; color: #E89F5F;">7%</span>
+                        <span style="font-size: 1.4rem;">Otocinclus – All Levels</span>
+                        <span style="font-size: 1.85rem; color: #FACC6B;">7%</span>
                     </div>
                 </div>
 
                 <div class="recruitment-benefits">
                     <div class="benefit-item">
-                        <h4>💰 30-65% Savings on Senior Hires</h4>
-                        <p>Traditional agencies charge 20%+ for leadership roles. We charge flat 7% regardless of seniority, saving you massive costs on critical hires.</p>
+                        <h4>💰 30–65% Savings on Senior Hires</h4>
+                        <p>Flat 7% means there is no separate “CXO fee slab”. You retain more capital while still accessing high‑quality talent.</p>
                     </div>
                     <div class="benefit-item">
-                        <h4>🎯 Comprehensive Recruitment Support</h4>
-                        <p>Includes sourcing, screening, interview coordination, offer negotiation, joining coordination, and 90-day free replacement guarantee.</p>
+                        <h4>🎯 End‑to‑End Recruitment Delivery</h4>
+                        <p>Requirement understanding, JD finalization, sourcing, screening, interview coordination, offer negotiation, and joining &amp; onboarding coordination – all handled for you.</p>
                     </div>
                     <div class="benefit-item">
-                        <h4>⚡ Faster Turnaround</h4>
-                        <p>28 days average time-to-hire (down from industry standard 45 days). Integration with our HR &amp; payroll operations enables seamless onboarding.</p>
+                        <h4>⚡ Faster, Integrated Hiring</h4>
+                        <p>Average 28‑day time‑to‑hire, with new hires flowing directly into HRMS, payroll, and compliance. No hand‑offs, no re‑entry of data.</p>
                     </div>
                     <div class="benefit-item">
-                        <h4>🤝 Continued Support Post-HR Handover</h4>
-                        <p>Recruitment services can continue even after HR handover in Model 2, providing long-term talent acquisition support.</p>
+                        <h4>🤝 Continues Beyond Handover</h4>
+                        <p>Recruitment support can continue even after HR transition in Model 2, so your internal HR team always has a specialist talent partner at 7%.</p>
                     </div>
                 </div>
             </div>
@@ -1786,14 +1970,14 @@
         <div class="case-studies-container">
             <div class="section-title">
                 <h2>Success Stories: Real Impact, Real Results</h2>
-                <p>See how we've helped growing businesses break free from the Admin Trap and scale confidently.</p>
+                <p>See how Otocinclus has helped growing businesses break free from the Admin Trap and scale confidently.</p>
             </div>
 
             <div class="case-study-card fade-in">
                 <div class="case-study-header">
                     <div class="case-study-info">
-                        <h3>SaaS Startup - 45 Employees</h3>
-                        <p>Industry: B2B SaaS | Challenge: Scaling from 15 to 45 employees in 8 months</p>
+                        <h3>High‑Growth SaaS Startup – 45 Employees</h3>
+                        <p>Challenge: Scaling from 15 to 45 employees in 8 months while running HR on spreadsheets.</p>
                     </div>
                     <div class="case-study-metrics">
                         <div class="metric">
@@ -1801,8 +1985,8 @@
                             <p>Founder Time Saved/Week</p>
                         </div>
                         <div class="metric">
-                            <h4>Zero</h4>
-                            <p>Compliance Issues</p>
+                            <h4>0</h4>
+                            <p>Compliance Escalations</p>
                         </div>
                         <div class="metric">
                             <h4>100%</h4>
@@ -1813,11 +1997,11 @@
                 <div class="case-study-body">
                     <div class="challenge">
                         <h4>The Challenge</h4>
-                        <p>Founder was spending 25+ hours weekly on HR tasks using spreadsheets. Rapid hiring created compliance risks. Lack of professional HR infrastructure was blocking Series A funding discussions.</p>
+                        <p>The founder was spending 25+ hours weekly on HR tasks using spreadsheets. Rapid hiring created compliance risk and inconsistent payroll. Lack of professional HR infrastructure was also slowing investor conversations.</p>
                     </div>
                     <div class="solution">
                         <h4>Otocinclus Solution</h4>
-                        <p>Implemented Model 1 (Managed HR Services). Set up GreytHR with complete payroll configuration. Established compliance framework for PF, ESI, PT. Onboarded 30 new employees seamlessly during growth phase. Result: Clean due diligence for Series A raise.</p>
+                        <p>Implemented Model 1 (Managed HR Services). Set up structured HR governance and a modern HRMS, configured payroll and attendance, and moved all data off spreadsheets. Otocinclus ran monthly payroll and compliance, freeing the founder to focus on product and sales – resulting in clean due diligence for the next funding round.</p>
                     </div>
                 </div>
             </div>
@@ -1825,8 +2009,8 @@
             <div class="case-study-card fade-in">
                 <div class="case-study-header">
                     <div class="case-study-info">
-                        <h3>Manufacturing Company - 80 Employees</h3>
-                        <p>Industry: Manufacturing | Challenge: Transition to internal HR team</p>
+                        <h3>Manufacturing Company – 80 Employees</h3>
+                        <p>Challenge: Build an internal HR team without losing control over compliance and payroll during transition.</p>
                     </div>
                     <div class="case-study-metrics">
                         <div class="metric">
@@ -1835,22 +2019,22 @@
                         </div>
                         <div class="metric">
                             <h4>52%</h4>
-                            <p>Cost Savings vs Agency</p>
+                            <p>Recruitment Fee Savings</p>
                         </div>
                         <div class="metric">
                             <h4>3 Months</h4>
-                            <p>Senior Hire Time</p>
+                            <p>Time to Close Senior Roles</p>
                         </div>
                     </div>
                 </div>
                 <div class="case-study-body">
                     <div class="challenge">
                         <h4>The Challenge</h4>
-                        <p>Company was ready to hire internal HR team but lacked systems and processes. Previous agency recruitment costs were 15-20% per hire. Needed professional HRMS but no expertise to implement.</p>
+                        <p>The company wanted to formalize HR, move away from fragmented vendors, and build an in‑house HR team. Historical recruitment costs for senior roles were very high, and there was no integrated HRMS.</p>
                     </div>
                     <div class="solution">
                         <h4>Otocinclus Solution</h4>
-                        <p>Deployed Model 2 (Build-Operate-Transfer). Phase 1: Implemented Keka HRMS with complete configuration. Phase 2: Ran operations for 3 months while hiring internal HR. Phase 3: Trained internal team with SOP handover. Recruited 5 senior positions at flat 7% (saved ₹12L+ vs traditional agency fees).</p>
+                        <p>Deployed Model 2 (Build‑Operate‑Transfer). Phase 1: Implemented HRMS with complete configuration of payroll, attendance, and leave. Phase 2: Ran operations for three months while internal HR was hired and onboarded. Phase 3: Trained the internal team with detailed SOP handover and continued recruitment at flat 7%, delivering multiple senior hires at significantly lower cost.</p>
                     </div>
                 </div>
             </div>
@@ -1862,7 +2046,7 @@
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Ready to Remove the Admin Trap?</h3>
-                <p>Schedule a free HR infrastructure audit. We'll analyze your current state, identify risks, and recommend the right engagement model for your business.</p>
+                <p>Schedule a free HR infrastructure audit. Otocinclus will analyze your current state, highlight risks, and recommend the right engagement model for your business.</p>
                 
                 <div class="contact-details">
                     <div class="contact-item">
@@ -1911,10 +2095,10 @@
                         <label for="employees">Number of Employees *</label>
                         <select id="employees" name="employees" required>
                             <option value="">Select range</option>
-                            <option value="1-15">1-15 employees</option>
-                            <option value="15-50">15-50 employees</option>
-                            <option value="50-100">50-100 employees</option>
-                            <option value="100-250">100-250 employees</option>
+                            <option value="1-15">1–15 employees</option>
+                            <option value="15-50">15–50 employees</option>
+                            <option value="50-100">50–100 employees</option>
+                            <option value="100-250">100–250 employees</option>
                             <option value="250+">250+ employees</option>
                         </select>
                     </div>
@@ -1923,8 +2107,8 @@
                         <select id="interest" name="interest" required>
                             <option value="">Select service</option>
                             <option value="model1">Model 1: Managed HR Services</option>
-                            <option value="model2">Model 2: Build-Operate-Transfer</option>
-                            <option value="recruitment">Recruitment Services Only</option>
+                            <option value="model2">Model 2: Build‑Operate‑Transfer</option>
+                            <option value="recruitment">Recruitment Services Only (7%)</option>
                             <option value="hrms">HRMS Implementation Only</option>
                             <option value="consultation">Free HR Audit</option>
                         </select>
@@ -1961,7 +2145,7 @@
                 <h4>Engagement Models</h4>
                 <ul class="footer-links">
                     <li><a href="#models">Model 1: Managed HR Services</a></li>
-                    <li><a href="#models">Model 2: Build-Operate-Transfer</a></li>
+                    <li><a href="#models">Model 2: Build‑Operate‑Transfer</a></li>
                     <li><a href="#recruitment">Flat 7% Recruitment</a></li>
                     <li><a href="#case-studies">Case Studies</a></li>
                 </ul>
@@ -1995,35 +2179,26 @@
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href.startsWith('#')) {
+                const targetId = this.getAttribute('href');
+                if (targetId.length > 1) {
                     e.preventDefault();
-                    const target = document.querySelector(href);
+                    const target = document.querySelector(targetId);
                     if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                 }
             });
         });
 
-        // Tab switching
-        function switchTab(modelId) {
+        // Tab switching for models
+        function switchTab(modelId, evt) {
             const tabs = document.querySelectorAll('.tab-content');
             const buttons = document.querySelectorAll('.tab-button');
-            
             tabs.forEach(tab => tab.classList.remove('active'));
             buttons.forEach(btn => btn.classList.remove('active'));
-            
-            const targetTab = document.getElementById(modelId);
-            if (targetTab) {
-                targetTab.classList.add('active');
-            }
-            // event may not exist if called programmatically, so guard it
-            if (window.event && window.event.target) {
-                window.event.target.classList.add('active');
+            document.getElementById(modelId).classList.add('active');
+            if (evt && evt.target) {
+                evt.target.classList.add('active');
             }
         }
 
@@ -2045,17 +2220,14 @@
             observer.observe(el);
         });
 
-        // Form submission
+        // Contact form (static demo)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            console.log('Form submitted:', data);
             alert('Thank you for your interest! We will contact you within 24 hours to schedule your free HR infrastructure audit.');
             this.reset();
         });
 
-        // Mobile menu toggle (basic implementation)
+        // Mobile menu toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             const navLinks = document.querySelector('.nav-links');
             if (navLinks.style.display === 'flex') {
@@ -2063,104 +2235,72 @@
             } else {
                 navLinks.style.display = 'flex';
                 navLinks.style.flexDirection = 'column';
-                navLinks.style.background = 'rgba(255,255,255,0.98)';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '64px';
-                navLinks.style.right = '16px';
-                navLinks.style.padding = '1.25rem 1.5rem';
-                navLinks.style.borderRadius = '16px';
-                navLinks.style.boxShadow = '0 10px 40px rgba(0,0,0,0.12)';
                 navLinks.style.gap = '1rem';
+                navLinks.style.background = '#ffffff';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.right = '20px';
+                navLinks.style.padding = '1rem 1.5rem';
+                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+                navLinks.style.borderRadius = '12px';
             }
         });
 
-        // Counter animation for stats
-        function animateValue(element, start, end, duration, suffix) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                element.textContent = value + (suffix || '');
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
+        // Hero slideshow logic
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.hero-dot');
+        const prevBtn = document.getElementById('heroPrev');
+        const nextBtn = document.getElementById('heroNext');
+        let currentSlide = 0;
+        let slideTimer = null;
+        const SLIDE_INTERVAL = 9000;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
         }
 
-        // Trigger counter animation when stats section is visible
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statItems = entry.target.querySelectorAll('.stat-item h3');
-                    statItems.forEach(stat => {
-                        const text = stat.textContent.trim();
-                        if (text.includes('%')) {
-                            const num = parseInt(text);
-                            animateValue(stat, 0, num, 2000, '%');
-                        } else if (text.includes('+')) {
-                            const num = parseInt(text);
-                            animateValue(stat, 0, num, 2000, '+');
-                        } else if (!isNaN(parseInt(text))) {
-                            const num = parseInt(text);
-                            animateValue(stat, 0, num, 2000, '');
-                        }
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) {
-            statsObserver.observe(statsSection);
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            showSlide(next);
         }
 
-        // Hero slider logic (Admin Trap + Flat 7% Recruitment)
-        (function() {
-            const slides = document.querySelectorAll('.hero-slider .slider-slide');
-            const dots = document.querySelectorAll('.hero-slider .slider-dot');
-            let currentSlide = 0;
-            let intervalId = null;
-            const SLIDE_DURATION = 8000;
+        function prevSlideFunc() {
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+        }
 
-            function showSlide(index) {
-                if (!slides.length) return;
-                slides[currentSlide].classList.remove('active');
-                dots[currentSlide].classList.remove('active');
-                currentSlide = (index + slides.length) % slides.length;
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-            }
+        function resetTimer() {
+            if (slideTimer) clearInterval(slideTimer);
+            slideTimer = setInterval(nextSlide, SLIDE_INTERVAL);
+        }
 
-            function startAutoPlay() {
-                stopAutoPlay();
-                intervalId = setInterval(() => {
-                    showSlide(currentSlide + 1);
-                }, SLIDE_DURATION);
-            }
+        if (slides.length > 0) {
+            resetTimer();
+        }
 
-            function stopAutoPlay() {
-                if (intervalId) {
-                    clearInterval(intervalId);
-                    intervalId = null;
-                }
-            }
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetTimer();
+        });
 
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    stopAutoPlay();
-                    showSlide(index);
-                    startAutoPlay();
-                });
+        prevBtn.addEventListener('click', () => {
+            prevSlideFunc();
+            resetTimer();
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const index = parseInt(dot.dataset.index, 10);
+                showSlide(index);
+                resetTimer();
             });
-
-            // Start autoplay when DOM is ready
-            if (slides.length) {
-                startAutoPlay();
-            }
-        })();
+        });
     </script>
 </body>
 </html>
